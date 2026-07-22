@@ -11,7 +11,7 @@
 
     if (!track) return;
 
-    const distance = track.scrollWidth - window.innerWidth;
+    const distance = track.scrollWidth - window.innerWidth - 300;
 
     gsap.to(track, {
       x: -distance,
@@ -29,6 +29,115 @@
       },
     });
   }
+
+  // 또추가
+  const heroIntro = gsap.timeline();
+
+  heroIntro
+    .from(".hero-small", {
+      opacity: 0,
+
+      y: 30,
+
+      duration: 0.8,
+    })
+
+    .from(
+      ".hero-name",
+      {
+        opacity: 0,
+
+        y: 80,
+
+        duration: 1,
+      },
+      "-=.3",
+    )
+
+    .from(
+      ".hero-role",
+      {
+        opacity: 0,
+
+        y: 30,
+
+        duration: 0.8,
+      },
+      "-=.4",
+    )
+
+    .from(
+      ".hero-bg-word",
+      {
+        opacity: 0,
+
+        scale: 0.9,
+
+        duration: 1.4,
+      },
+      "-=.8",
+    );
+
+  const gradient = document.querySelector(".hero-gradient");
+
+  window.addEventListener("mousemove", (e) => {
+    const x = (e.clientX - window.innerWidth / 2) * 0.02;
+
+    const y = (e.clientY - window.innerHeight / 2) * 0.02;
+
+    gsap.to(gradient, {
+      x,
+
+      y,
+
+      duration: 1.5,
+
+      ease: "power3.out",
+    });
+  });
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".hero",
+
+        start: "top top",
+
+        end: "+=100%",
+
+        scrub: 1,
+
+        pin: true,
+      },
+    })
+
+    .to(
+      ".hero-inner",
+      {
+        opacity: 0,
+
+        y: -80,
+      },
+      0,
+    )
+
+    .to(
+      ".hero-bg-word",
+      {
+        scale: 1.15,
+
+        opacity: 0.05,
+      },
+      0,
+    )
+
+    .to(
+      ".hero-gradient",
+      {
+        scale: 1.2,
+      },
+      0,
+    );
 
   /* ---------- Lenis smooth scroll ---------- */
   var lenis = null;
@@ -55,10 +164,23 @@
   function scrollToTarget(id) {
     var el = document.getElementById(id);
     if (!el) return;
+
     if (lenis) {
-      lenis.scrollTo(el, { offset: 0 });
+      if (id === "hero") {
+        lenis.scrollTo(0, {
+          duration: 1.2,
+        });
+      } else {
+        lenis.scrollTo(el, {
+          offset: -80,
+          duration: 1.2,
+        });
+      }
     } else {
-      el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      window.scrollTo({
+        top: el.offsetTop - 80,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
     }
   }
 
@@ -102,8 +224,8 @@
     if (!el) return;
     ScrollTrigger.create({
       trigger: el,
-      start: "top center",
-      end: "bottom center",
+      start: "top 30%",
+      end: "bottom 30%",
       onToggle: function (self) {
         if (self.isActive) {
           document.querySelectorAll(".scene-dot").forEach(function (d) {
