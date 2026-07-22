@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>차민성 | Frontend Developer</title>
+    <meta name="description" content="생성형 AI를 도구로, 기본기를 무기로 삼는 프론트엔드 개발자 차민성의 포트폴리오" />
+
+    <!-- Fonts: Pretendard(한글/본문) + JetBrains Mono(라벨/코드 톤) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+
+    <link rel="stylesheet" href="css/ftflo.css" />
+
+</head>
+
+<body class="loading">
+
+    <!-- 로더: 진입 시 카운터 + 커튼 와이프 -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-top">
+            <span>CHA MINSUNG</span>
+            <span>PORTFOLIO</span>
+        </div>
+        <div class="loader-count" id="loaderCount">0<span>%</span></div>
+        <div class="loader-bar"><i id="loaderBar"></i></div>
+    </div>
+    <div class="loader-panel" id="loaderPanel"></div>
+
+    <!-- 커스텀 커서 -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"><span id="cursorLabel"></span></div>
+
+    <!-- 우측 씬(scene) 진행 인디케이터: 여백 노트 컨셉의 UI -->
+    <nav class="scene-nav" aria-label="섹션 이동">
+        <button class="scene-dot active magnetic" data-target="hero" data-cursor="GO"><span class="mono">HERO</span><i
+                class="dot"></i></button>
+        <button class="scene-dot magnetic" data-target="about" data-cursor="GO"><span class="mono">ABOUT</span><i
+                class="dot"></i></button>
+        <button class="scene-dot magnetic" data-target="skills" data-cursor="GO"><span class="mono">SKILLS</span><i
+                class="dot"></i></button>
+        <button class="scene-dot magnetic" data-target="projects" data-cursor="GO"><span class="mono">WORK</span><i
+                class="dot"></i></button>
+        <button class="scene-dot magnetic" data-target="gallery" data-cursor="GO"><span class="mono">GALLERY</span><i
+                class="dot"></i></button>
+        <button class="scene-dot magnetic" data-target="contact" data-cursor="GO"><span class="mono">CONTACT</span><i
+                class="dot"></i></button>
+    </nav>
+
+    <header class="top-nav" id="topNav">
+        <a href="#hero" class="logo">CHA MINSUNG</a>
+        <ul>
+            <li><a class="magnetic" href="#about">About</a></li>
+            <li><a class="magnetic" href="#skills">Skills</a></li>
+            <li><a class="magnetic" href="#projects">Work</a></li>
+            <li><a class="magnetic" href="#gallery">Gallery</a></li>
+            <li><a class="magnetic" href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <main>
+
+        <!-- ===================== HERO ===================== -->
+        <section id="hero" class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow line-wrap"><span class="line">// FRONTEND DEVELOPER</span></span>
+                <h1 class="hero-name">
+                    <span class="line-wrap"><span class="line">차민성</span></span>
+                </h1>
+                <p class="hero-role">
+                    <span class="line-wrap"><span class="line">생성형 AI를 도구로, 기본기를 무기로 삼는</span></span>
+                    <span class="line-wrap"><span class="line">프론트엔드 개발자입니다.</span></span>
+                </p>
+            </div>
+            <div class="scroll-cue mono">SCROLL<span class="arrow">↓</span></div>
+        </section>
+
+        <!-- ===================== ABOUT ===================== -->
+        <section id="about" class="about">
+            <div class="container about-grid">
+                <div class="photo-frame placeholder-img">
+                    <!-- TODO: 실제 프로필 사진으로 교체 -> <img src="profile.jpg" alt="차민성 프로필 사진"> -->
+                    <span>PROFILE PHOTO<br />준비 중</span>
+                </div>
+
+                <div class="about-copy">
+                    <span class="eyebrow scramble">// 01 ABOUT</span>
+                    <h2 class="line-wrap"><span class="line">기본기와 AI를</span></h2>
+                    <h2 class="line-wrap" style="margin-top:-14px;"><span class="line">함께 다루는 개발자</span></h2>
+
+                    <div class="about-text">
+                        <p>대우능력개발원 생성형 AI 프론트엔드 개발자 과정을 수료한 예비 졸업생입니다. 실무 중심 교육으로 최신 기술과 개발 트렌드를 익혔고, 팀 프로젝트를 통해 협업 능력을
+                            함께 키웠습니다.</p>
+                        <p>대학 졸업을 앞두고 첫 직무를 준비하며, 새로운 환경에 빠르게 적응하고 꾸준히 성장하는 개발자가 되는 것을 목표로 하고 있습니다.</p>
+                    </div>
+
+                    <ul class="about-strengths">
+                        <li>
+                            <span class="num mono">01</span>
+                            <div><strong>탄탄한 기본기</strong>
+                                <p>HTML/CSS/JS와 반응형·접근성을 고려한 UI 구현</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="num mono">02</span>
+                            <div><strong>생성형 AI 활용</strong>
+                                <p>AI를 개발 파트너로 삼아 문제 해결 속도와 품질을 함께 높임</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="num mono">03</span>
+                            <div><strong>협업 커뮤니케이션</strong>
+                                <p>Figma·Notion·Git으로 팀원과 눈높이를 맞추는 소통</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="about-stats">
+                        <div><strong class="mono count-up" data-target="2" data-suffix="+">0</strong><span>주요 프로젝트
+                                완료</span></div>
+                        <div><strong class="mono count-up" data-target="8" data-suffix="+">0</strong><span>기술 스택
+                                보유</span></div>
+                        <div><strong class="mono count-up" data-target="100" data-suffix="%">0</strong><span>열정으로 준비된
+                                신입</span></div>
+                    </div>
+                </div>
+
+        </section>
+
+        <!-- ===================== MARQUEE ===================== -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track" id="marqueeTrack">
+                <span>FRONTEND DEVELOPER</span><span>GENERATIVE
+                    AI</span><span>REACT</span><span>NEXT.JS</span><span>PYTHON</span><span>ALWAYS SHIPPING</span>
+                <span>FRONTEND DEVELOPER</span><span>GENERATIVE
+                    AI</span><span>REACT</span><span>NEXT.JS</span><span>PYTHON</span><span>ALWAYS SHIPPING</span>
+            </div>
+        </div>
+
+        <!-- ===================== SKILLS ===================== -->
+        <section id="skills" class="skills">
+
+            <div class="skills-sticky">
+
+                <div class="skills-head container">
+
+                    <span class="eyebrow">// 02 SKILLS</span>
+
+                    <h2>다룰 수 있는 도구들</h2>
+
+                    <p>직접 만들어보고 부딪히며 익힌 기술 스택입니다.</p>
+
+                </div>
+                <!-- 따로수정한부분 -->
+                <!-- <div class="skills-grid"> -->
+                <div class="skills-wrapper">
+                    <div class="skills-track skills-grid">
+                        <div class="skill-card" data-tilt><span class="num mono">01</span>
+                            <h3>HTML5</h3>
+                            <p>시맨틱 마크업과 접근성을 고려한 구조 설계</p><span class="tag">FRONTEND</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">02</span>
+                            <h3>CSS3</h3>
+                            <p>Grid·Flexbox 기반의 반응형 레이아웃</p><span class="tag">FRONTEND</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">03</span>
+                            <h3>JavaScript</h3>
+                            <p>DOM 조작과 상태 기반 UI 구현</p><span class="tag">FRONTEND</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">04</span>
+                            <h3>React</h3>
+                            <p>컴포넌트 단위의 UI 설계와 재사용</p><span class="tag">FRONTEND</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">05</span>
+                            <h3>Tailwind CSS</h3>
+                            <p>유틸리티 클래스 기반의 빠른 스타일링</p><span class="tag">FRONTEND</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">06</span>
+                            <h3>Next.js</h3>
+                            <p>페이지 라우팅과 API 연동 구조 학습</p><span class="tag">TOOLS</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">07</span>
+                            <h3>Python</h3>
+                            <p>텍스트 처리·자동화 스크립트 제작</p><span class="tag">TOOLS</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">08</span>
+                            <h3>Figma</h3>
+                            <p>와이어프레임과 UI 디자인 협업</p><span class="tag">TOOLS</span>
+                        </div>
+                        <div class="skill-card" data-tilt><span class="num mono">09</span>
+                            <h3>Notion</h3>
+                            <p>프로젝트 문서화 및 팀 협업 관리</p><span class="tag">TOOLS</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- ===================== PROJECTS ===================== -->
+        <section id="projects" class="projects">
+            <div class="container projects-head section-head" style="position:relative;">
+                <span class="ghost-text" data-speed="0.15">WORK</span>
+                <span class="eyebrow scramble">// 03 WORK</span>
+                <h2>프로젝트</h2>
+                <p style="max-width:52ch;">직접 기획하고 구현까지 완료한 프로젝트입니다.</p>
+            </div>
+
+            <div class="container">
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <!-- TODO: 스크린샷 교체 -->
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">01 / 06</span>
+                        <h3>사자성어 추출 자동화</h3>
+                        <p>파이썬으로 사자성어를 자동으로 추출하고 정리하는 흐름을 구현했습니다. 텍스트 정제부터 xlsx 저장까지, 실습형 스크립트로 자연스럽게 익혔습니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>Python · Text Processing · Automate</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW" href="https://github.com/minsuncha41/pppysjsocc"
+                                target="_blank" rel="noopener">GitHub ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">02 / 06</span>
+                        <h3>CUI 사자성어 퀴즈</h3>
+                        <p>터미널 기반으로 동작하는 사자성어 퀴즈 앱입니다. 질문 출력, 입력 처리, 정답 판별과 점수 기록까지 하나의 흐름으로 구성해 CLI 프로그램 개발을 익혔습니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>Python · CUI · Input/Output</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW" href="https://github.com/minsuncha41/pppysjsocc"
+                                target="_blank" rel="noopener">GitHub ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">03 / 06</span>
+                        <h3>GUI 사자성어 퀴즈</h3>
+                        <p>Tkinter를 활용해 GUI 형태의 사자성어 퀴즈 앱을 만들었습니다. 버튼과 화면 구성 요소를 연결하며 데스크톱 앱의 사용자 경험을 함께 익혔습니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>Python · Tkinter · Desktop App</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW" href="https://github.com/minsuncha41/pppysjsocc"
+                                target="_blank" rel="noopener">GitHub ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">04 / 06</span>
+                        <h3>팀 협업 로컬스토리지 치과 웹사이트</h3>
+                        <p>브라우저 LocalStorage를 핵심 저장소로 활용해 회원가입, 로그인 세션, 예약 신청·조회, 공지사항까지 구현했습니다. 웹 개발 경험이 없는 팀원과 협업하며
+                            기술적 진입장벽을 낮추는 과정을 이끌었습니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>HTML · CSS · JS · Responsive</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW"
+                                href="https://github.com/minsuncha41/stu26/tree/master" target="_blank"
+                                rel="noopener">GitHub ↗</a>
+                            <a class="magnetic" data-cursor="VIEW" href="https://minsuncha41.github.io/stu26/"
+                                target="_blank" rel="noopener">Demo ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">05 / 06</span>
+                        <h3>치과 웹사이트 로그인 · 예약 관리 시스템</h3>
+                        <p>Firebase를 활용해 로그인, 회원가입, 예약 신청·조회, 관리자 관리까지 하나의 흐름으로 연결한 포트폴리오형 웹 애플리케이션입니다. 실제 서비스처럼 동작하는
+                            UI와 데이터 흐름을 직접 구현했습니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>HTML · CSS · JS · Firebase · CRUD</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW" href="https://github.com/minsuncha41/cgaiplgt"
+                                target="_blank" rel="noopener">GitHub ↗</a>
+                            <a class="magnetic" data-cursor="VIEW" href="https://minsuncha41.github.io/cgaiplgt/"
+                                target="_blank" rel="noopener">Demo ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-media placeholder-img" data-tilt data-tilt-strength="6">
+                        <span>SCREENSHOT<br />준비 중</span>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-num mono">06 / 06</span>
+                        <h3>Next.js 기반 인사·근태·급여 관리 웹앱</h3>
+                        <p>Next.js로 구성한 관리형 웹 애플리케이션으로, 근태·급여·인사 관리와 증명서 발급 흐름을 구현하고 있습니다. API 연동과 관리자 페이지 구성 경험을 확장하는
+                            중입니다.</p>
+                        <dl class="project-meta mono">
+                            <div>
+                                <dt>STACK</dt>
+                                <dd>Next.js · React · API · Dashboard</dd>
+                            </div>
+                            <div>
+                                <dt>PERIOD</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                            <div>
+                                <dt>ROLE</dt>
+                                <dd>입력 예정</dd>
+                            </div>
+                        </dl>
+                        <div class="project-links">
+                            <a class="magnetic" data-cursor="VIEW" href="https://github.com/minsuncha41/stu.pub"
+                                target="_blank" rel="noopener">GitHub ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===================== GALLERY ===================== -->
+        <section id="gallery" class="gallery">
+            <div class="container section-head" style="position:relative;">
+                <span class="ghost-text" data-speed="0.1">ARCHIVE</span>
+                <span class="eyebrow scramble">// 04 GALLERY</span>
+                <h2>비주얼 아카이브</h2>
+                <p style="max-width:52ch;">프로젝트의 화면들을 모아봤습니다. 옆으로 드래그해서 넘겨보세요.</p>
+            </div>
+
+            <div class="container gallery-viewport">
+                <p class="drag-cue" id="dragCue">DRAG TO EXPLORE <span class="arrow">→</span></p>
+                <div style="position:relative;">
+                    <div class="gallery-edge left"></div>
+                    <div class="gallery-edge right"></div>
+                    <div class="gallery-track" id="galleryTrack">
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="사자성어 추출 자동화"><span>IMG 01</span></button>
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="CUI 사자성어 퀴즈"><span>IMG 02</span></button>
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="GUI 사자성어 퀴즈"><span>IMG 03</span></button>
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="치과 웹사이트 - 로컬스토리지"><span>IMG 04</span></button>
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="치과 웹사이트 - Firebase"><span>IMG 05</span></button>
+                        <button class="gallery-item placeholder-img" data-cursor="ZOOM"
+                            data-caption="인사·근태·급여 관리 웹앱"><span>IMG 06</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lightbox" id="lightbox" aria-hidden="true">
+                <button class="lightbox-close" id="lightboxClose" aria-label="닫기">×</button>
+                <img id="lightboxImg" src="" alt="" />
+                <p class="lightbox-caption mono" id="lightboxCaption"></p>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section id="contact" class="contact">
+            <div class="container section-head" style="position:relative;">
+                <span class="ghost-text" data-speed="0.12">TALK</span>
+                <span class="eyebrow scramble">// 05 CONTACT</span>
+                <h2 class="line-wrap"><span class="line">함께 만들고 싶은</span></h2>
+                <h2 class="line-wrap" style="margin-top:-10px;"><span class="line">프로젝트가 있다면</span></h2>
+
+                <div class="contact-links">
+                    <a class="contact-btn magnetic" data-cursor="MAIL" href="mailto:msc74177@gmail.com">Email <span
+                            class="mono">msc74177@gmail.com</span></a>
+                    <a class="contact-btn magnetic" data-cursor="GITHUB" href="https://github.com/minsuncha41"
+                        target="_blank" rel="noopener">GitHub <span class="mono">@minsuncha41</span></a>
+                    <a class="contact-btn disabled" href="#" aria-disabled="true" onclick="return false;">Resume <span
+                            class="mono">준비 중</span></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="mono">© 2025 CHA MINSUNG</p>
+        <p class="mono">BUILT WITH HTML · CSS · GSAP</p>
+    </footer>
+
+    <!-- ===================== Scripts ===================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+
+    /* 따로추가부분 */
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+
+    <script src="js/ftflo.js" defer></script>
+
+
+</body>
+
+</html>
