@@ -1204,17 +1204,26 @@ body.cursor-drag .cursor-ring span {
     font-weight: 600;
     font-size: clamp(4rem, 16vw, 12rem);
     color: transparent;
-    -webkit-text-stroke: 1px var(--line);
+    -webkit-text-stroke: 7px var(--line);
     letter-spacing: -0.02em;
-    z-index: 0;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
+    opacity: 0.3;
+    z-index: -2;
 }
 
 .section-head {
     position: relative;
     z-index: 1;
+}
+
+.gallery .ghost-text {
+    top: -0.80em;
+}
+
+.contact .ghost-text {
+    top: -0.65em;
 }
 
 /* ===================== Horizontal drag gallery ===================== */
