@@ -44,9 +44,9 @@
             마지막까지 여유 공간 확보
             */
 
-        end: () => "+=" + (getDistance() - 1800),
+        end: () => "+=" + (getDistance() - 2700),
 
-        scrub: 5,
+        scrub: 3,
 
         invalidateOnRefresh: true,
 

@@ -27,7 +27,6 @@
 
 html {
     background: var(--bg);
-    scroll-padding-top: 96px;
 }
 
 html.no-scroll {
@@ -104,7 +103,6 @@ button:focus-visible {
 section {
     position: relative;
     padding: var(--section-pad) 0;
-    scroll-margin-top: 100px;
 }
 
 h1,
@@ -503,7 +501,7 @@ p {
     overflow: hidden;
     position: sticky;
     top: 120px;
-    width: 70%;
+    width: 50%;
     height: auto;
     margin: 0 auto;
 }
@@ -511,7 +509,6 @@ p {
 .photo-frame img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     transform: scale(1.08);
 }
 
@@ -575,68 +572,15 @@ p {
 @media (max-width:860px) {
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
     }
 
     .photo-frame {
         position: static;
-        max-width: 220px;
-        width: min(220px, 70vw);
+        max-width: 200px;
     }
 
     .scroll-indicator {
         display: none;
-    }
-
-    .skills {
-        height: auto;
-        padding: 96px 0;
-    }
-
-    .skills-sticky {
-        position: relative;
-        height: auto;
-    }
-
-    .skills-track {
-        padding: 0 24px;
-        width: max-content;
-    }
-
-    .skill-card {
-        flex: 0 0 280px;
-        min-height: 260px;
-    }
-
-    .project {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 40px 0;
-    }
-
-    .project-media {
-        aspect-ratio: 16 / 10;
-    }
-
-    .gallery-track {
-        padding: 8px 16px 20px;
-    }
-
-    .gallery-track .gallery-item {
-        flex: 0 0 min(78vw, 280px);
-        width: min(78vw, 280px);
-        height: min(78vw, 280px);
-        min-width: min(78vw, 280px);
-        min-height: min(78vw, 280px);
-    }
-
-    .contact h2 {
-        max-width: 100%;
-    }
-
-    footer {
-        flex-direction: column;
-        gap: 8px;
     }
 }
 
@@ -668,7 +612,7 @@ p {
 
 .skills {
 
-    height: 360vh;
+    height: 300vh;
 
     position: relative;
 
@@ -761,45 +705,42 @@ p {
     text-transform: uppercase;
 }
 
+
 .htmlcd {
-    background-color: rgba(255, 0, 0, 0.3);
+    background-color: #F7CAC9;
 }
 
 .csscd {
-    background-color: rgba(0, 204, 255, 0.3);
+    background-color: #92A8D1;
 }
 
 .jscd {
-    background-color: rgba(255, 234, 0, 0.3);
+    background-color: #FFE5B4;
 }
 
 .reactcd {
-    background-color: rgba(148, 148, 148, 0.3);
+    background-color: #BFD8D2;
 }
 
 .tailcd {
-    background-color: rgba(255, 123, 0, 0.3);
+    background-color: #C5E1A5;
 }
 
 .nextcd {
-    background-color: rgba(0, 119, 255, 0.3);
+    background-color: #E6E2D3;
 }
 
 .pycd {
-    background-color: rgba(43, 255, 0, 0.3);
+    background-color: #FAD6A5;
 }
 
 .figmacd {
-    background-color: rgba(255, 0, 187, 0.3);
+    background-color: #D7BDE2;
 }
 
 .notioncd {
-    background-color: rgba(139, 176, 115, 0.3);
+    background-color: #2ac9c4;
 }
-
-
-
-
 
 
 
@@ -830,67 +771,6 @@ p {
 @media (max-width:560px) {
     .skills-grid {
         grid-template-columns: 1fr;
-    }
-
-    .top-nav {
-        padding: 18px var(--gutter);
-    }
-
-    .hero-name {
-        font-size: clamp(3rem, 15vw, 4.8rem);
-    }
-
-    .hero-role {
-        font-size: 1rem;
-        padding: 0 8px;
-    }
-
-    .skills-head {
-        margin-bottom: 40px;
-    }
-
-    .skill-card {
-        flex: 0 0 240px;
-        min-height: 230px;
-        padding: 24px;
-    }
-
-    .project-info h3 {
-        max-width: 100%;
-    }
-
-    .project-meta div {
-        grid-template-columns: 1fr;
-        gap: 4px;
-    }
-
-    .project-links {
-        flex-wrap: wrap;
-        gap: 14px;
-    }
-
-    .gallery-track {
-        gap: 12px;
-        padding: 8px 12px 20px;
-    }
-
-    .gallery-track .gallery-item {
-        flex: 0 0 72vw;
-        width: 72vw;
-        height: 72vw;
-        min-width: 72vw;
-        min-height: 72vw;
-    }
-
-    .contact-links {
-        margin-top: 36px;
-    }
-
-    .contact-btn {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 20px 0;
     }
 }
 
@@ -933,7 +813,7 @@ p {
 .project-info h3 {
     margin-top: 14px;
     font-size: clamp(1.5rem, 2.6vw, 2.1rem);
-    max-width: 100%;
+    max-width: 14ch;
 }
 
 .project-info>p {
@@ -1317,7 +1197,7 @@ body.cursor-drag .cursor-ring span {
 /* ===================== Ghost background text ===================== */
 .ghost-text {
     position: absolute;
-    top: -0.55em;
+    top: -0.35em;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-mono);
@@ -1327,8 +1207,6 @@ body.cursor-drag .cursor-ring span {
     -webkit-text-stroke: 1px var(--line);
     letter-spacing: -0.02em;
     z-index: 0;
-    opacity: 0.7;
-    z-index: -2;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
@@ -1376,18 +1254,13 @@ body.cursor-drag .cursor-ring span {
 
 .gallery-track {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x proximity;
     cursor: grab;
+    padding-bottom: 8px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 8px 0 20px;
-    align-items: stretch;
-    scroll-padding-left: 24px;
-    scroll-padding-right: 24px;
-    scroll-behavior: auto;
-    overscroll-behavior-x: contain;
 }
 
 .gallery-track::-webkit-scrollbar {
@@ -1397,29 +1270,18 @@ body.cursor-drag .cursor-ring span {
 .gallery-track.dragging {
     cursor: grabbing;
     scroll-snap-type: none;
-    user-select: none;
 }
 
 .gallery-track .gallery-item {
-    flex: 0 0 320px;
-    width: 320px;
-    height: 320px;
-    min-width: 320px;
-    min-height: 320px;
-    scroll-snap-align: center;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    touch-action: pan-x;
+    flex: 0 0 clamp(240px, 32vw, 420px);
+    scroll-snap-align: start;
 }
 
 .gallery-edge {
     position: absolute;
     top: 0;
     bottom: 8px;
-    width: min(160px, 12vw);
+    width: min(120px, 10vw);
     pointer-events: none;
     z-index: 2;
 }
