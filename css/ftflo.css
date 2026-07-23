@@ -656,9 +656,10 @@ p {
 
     gap: 40px;
 
-    width: max-content + 500px;
+    width: max-content;
 
-    padding: 0 30vw;
+    /* 카드 폭(380px)의 절반만큼 빼서, 카드가 정확히 화면 중앙에 오도록 계산 */
+    padding: 0 calc(50vw - 190px);
 
 }
 

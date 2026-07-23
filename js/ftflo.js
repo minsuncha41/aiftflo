@@ -11,7 +11,18 @@
 
     if (!track) return;
 
-    const distance = track.scrollWidth - window.innerWidth - 300;
+    const cards = track.querySelectorAll(".skill-card");
+
+    if (!cards.length) return;
+
+    const firstCard = cards[0];
+    const lastCard = cards[cards.length - 1];
+
+    /* CSS에서 .skills-track의 좌우 padding을 calc(50vw - 카드폭/2)로
+       맞춰뒀기 때문에, 첫 카드는 스크롤 시작 시점에 이미 화면 정중앙에 있다.
+       따라서 "첫 카드 위치 -> 마지막 카드 위치" 거리만큼만 딱 이동시키면
+       스크롤이 끝나는 순간 마지막 카드도 정확히 정중앙에 도착한다. */
+    const distance = lastCard.offsetLeft - firstCard.offsetLeft;
 
     gsap.to(track, {
       x: -distance,
@@ -25,7 +36,7 @@
 
         end: "bottom bottom",
 
-        scrub: 1,
+        scrub: 3,
       },
     });
   }
@@ -598,6 +609,8 @@
   /* ---------- Projects: pin + scrub image scale + staggered meta reveal ---------- */
   var mm = gsap.matchMedia();
 
+  var topNavEl = document.querySelector(".top-nav");
+
   mm.add(
     "(min-width: 861px) and (prefers-reduced-motion: no-preference)",
     function () {
@@ -612,7 +625,11 @@
         var tl = gsap.timeline({
           scrollTrigger: {
             trigger: project,
-            start: "top top+=90",
+            /* 90px로 고정하면 실제 nav 높이와 달라 위쪽에 빈 여백이
+               생기므로, nav 실제 높이를 그대로 사용해 딱 붙게 만든다 */
+            start: function () {
+              return "top top+=" + (topNavEl ? topNavEl.offsetHeight : 0);
+            },
             end: "+=100%",
             scrub: true,
             pin: true,
