@@ -5,11 +5,15 @@
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
-  /* 따로추가한부분 */
+  // 스킬카드움직임
   function initHorizontalSkills() {
+    if (window.innerWidth < 860) return;
+
+    const section = document.querySelector(".skills");
+    const sticky = document.querySelector(".skills-sticky");
     const track = document.querySelector(".skills-track");
 
-    if (!track) return;
+    if (!section || !sticky || !track) return;
 
     const cards = track.querySelectorAll(".skill-card");
 
@@ -18,25 +22,35 @@
     const firstCard = cards[0];
     const lastCard = cards[cards.length - 1];
 
-    /* CSS에서 .skills-track의 좌우 padding을 calc(50vw - 카드폭/2)로
-       맞춰뒀기 때문에, 첫 카드는 스크롤 시작 시점에 이미 화면 정중앙에 있다.
-       따라서 "첫 카드 위치 -> 마지막 카드 위치" 거리만큼만 딱 이동시키면
-       스크롤이 끝나는 순간 마지막 카드도 정확히 정중앙에 도착한다. */
-    const distance = lastCard.offsetLeft - firstCard.offsetLeft;
+    function getDistance() {
+      return lastCard.offsetLeft - firstCard.offsetLeft;
+    }
 
     gsap.to(track, {
-      x: -distance,
+      x: () => -getDistance(),
 
       ease: "none",
 
       scrollTrigger: {
-        trigger: ".skills",
+        trigger: sticky,
 
-        start: "top top",
+        /*
+            sticky 영역이 화면 전체 들어온 뒤 시작
+            */
 
-        end: "bottom bottom",
+        start: "bottom+=200 bottom",
 
-        scrub: 3,
+        /*
+            마지막까지 여유 공간 확보
+            */
+
+        end: () => "+=" + (getDistance() - 1800),
+
+        scrub: 5,
+
+        invalidateOnRefresh: true,
+
+        markers: false,
       },
     });
   }
@@ -183,13 +197,13 @@
         });
       } else {
         lenis.scrollTo(el, {
-          offset: -80,
+          offset: -96,
           duration: 1.2,
         });
       }
     } else {
       window.scrollTo({
-        top: el.offsetTop - 80,
+        top: Math.max(0, el.offsetTop - 96),
         behavior: reduceMotion ? "auto" : "smooth",
       });
     }
@@ -230,26 +244,39 @@
 
   /* ---------- Scene dot active state ---------- */
   var sceneIds = ["hero", "about", "skills", "projects", "gallery", "contact"];
-  sceneIds.forEach(function (id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top 30%",
-      end: "bottom 30%",
-      onToggle: function (self) {
-        if (self.isActive) {
-          document.querySelectorAll(".scene-dot").forEach(function (d) {
-            d.classList.remove("active");
-          });
-          var dot = document.querySelector(
-            '.scene-dot[data-target="' + id + '"]',
-          );
-          if (dot) dot.classList.add("active");
-        }
-      },
+  var sceneDots = document.querySelectorAll(".scene-dot");
+
+  function updateActiveSceneDot() {
+    var viewportTop = window.scrollY;
+    var viewportBottom = viewportTop + window.innerHeight;
+    var activeId = "hero";
+
+    sceneIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+
+      var rect = el.getBoundingClientRect();
+      var sectionTop = viewportTop + rect.top;
+      var sectionBottom = viewportTop + rect.bottom;
+      var isInViewport =
+        sectionBottom > viewportTop + 80 && sectionTop < viewportBottom - 80;
+
+      if (isInViewport) {
+        activeId = id;
+      }
     });
-  });
+
+    sceneDots.forEach(function (dot) {
+      dot.classList.toggle(
+        "active",
+        dot.getAttribute("data-target") === activeId,
+      );
+    });
+  }
+
+  updateActiveSceneDot();
+  window.addEventListener("scroll", updateActiveSceneDot, { passive: true });
+  window.addEventListener("resize", updateActiveSceneDot);
 
   /* ---------- Generic line reveal ---------- */
   function revealLines(container, opts) {
@@ -682,20 +709,55 @@
       startScroll = 0,
       moved = false;
 
+    function centerGalleryItem() {
+      var firstItem = track.querySelector(".gallery-item");
+      if (!firstItem) return;
+
+      var viewportWidth = window.innerWidth;
+      var isMobile = viewportWidth <= 860;
+      var itemWidth = isMobile ? Math.min(280, viewportWidth * 0.78) : 320;
+      var offset = Math.max(0, (viewportWidth - itemWidth) / 2);
+
+      track.style.paddingLeft = isMobile ? "12px" : "16px";
+      track.style.paddingRight = isMobile ? "12px" : "16px";
+      track.style.scrollPaddingLeft = isMobile ? "12px" : "16px";
+      track.style.scrollPaddingRight = isMobile ? "12px" : "16px";
+    }
+
+    function loopGalleryToStart() {
+      var items = track.querySelectorAll(".gallery-item");
+      if (!items.length) return;
+
+      var isMobile = window.innerWidth <= 860;
+      var cardWidth = isMobile
+        ? items[0].getBoundingClientRect().width + 12
+        : items[0].getBoundingClientRect().width + 18;
+      var contentWidth = cardWidth * items.length;
+      var maxScroll = Math.max(0, contentWidth - track.clientWidth + 24);
+
+      if (track.scrollLeft >= maxScroll - 8) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }
+
+    window.addEventListener("load", centerGalleryItem);
+    window.addEventListener("resize", centerGalleryItem);
+
     track.addEventListener("pointerdown", function (e) {
       isDown = true;
       moved = false;
       startX = e.clientX;
       startScroll = track.scrollLeft;
       track.classList.add("dragging");
+      track.setPointerCapture(e.pointerId);
     });
     window.addEventListener("pointermove", function (e) {
       if (!isDown) return;
       var dx = e.clientX - startX;
       if (Math.abs(dx) > 4) moved = true;
-      track.scrollLeft = startScroll - dx;
+      track.scrollLeft = startScroll - dx * 1.05;
     });
-    window.addEventListener("pointerup", function () {
+    window.addEventListener("pointerup", function (e) {
       isDown = false;
       track.classList.remove("dragging");
     });
@@ -728,8 +790,9 @@
       "scroll",
       function () {
         if (dragCue) dragCue.style.opacity = "0";
+        loopGalleryToStart();
       },
-      { once: true },
+      { passive: true },
     );
   })();
 
