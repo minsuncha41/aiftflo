@@ -737,7 +737,7 @@ p {
 .skill-card .num {
     font-family: var(--font-mono);
     font-size: 1rem;
-    color: var(--ink-faint);
+    color: black;
 }
 
 .skill-card h3 {
@@ -760,6 +760,48 @@ p {
     letter-spacing: .06em;
     text-transform: uppercase;
 }
+
+.htmlcd {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.csscd {
+    background-color: rgba(0, 204, 255, 0.3);
+}
+
+.jscd {
+    background-color: rgba(255, 234, 0, 0.3);
+}
+
+.reactcd {
+    background-color: rgba(148, 148, 148, 0.3);
+}
+
+.tailcd {
+    background-color: rgba(255, 123, 0, 0.3);
+}
+
+.nextcd {
+    background-color: rgba(0, 119, 255, 0.3);
+}
+
+.pycd {
+    background-color: rgba(43, 255, 0, 0.3);
+}
+
+.figmacd {
+    background-color: rgba(255, 0, 187, 0.3);
+}
+
+.notioncd {
+    background-color: rgba(139, 176, 115, 0.3);
+}
+
+
+
+
+
+
 
 @media (max-width:860px) {
     .skills-grid {
