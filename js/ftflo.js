@@ -827,6 +827,8 @@
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("no-scroll");
+
+      document.body.classList.add("cursor-open"); // 추가
     });
   });
 
@@ -834,6 +836,8 @@
     lightbox.classList.remove("open");
     lightbox.setAttribute("aria-hidden", "true");
     document.documentElement.classList.remove("no-scroll");
+
+    document.body.classList.remove("cursor-open"); // 추가
   }
   document
     .getElementById("lightboxClose")

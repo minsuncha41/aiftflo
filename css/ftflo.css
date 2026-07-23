@@ -1351,3 +1351,17 @@ body.cursor-drag .cursor-ring span {
         animation: none;
     }
 }
+
+
+body.cursor-open .cursor-ring {
+    width: 14px;
+    height: 14px;
+    background-color: rgb(0, 72, 255);
+    border-color: rgba(251, 251, 251, 0.345);
+}
+
+
+body.cursor-open .cursor-ring span {
+    opacity: 1;
+    color: white;
+}
