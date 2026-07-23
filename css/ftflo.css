@@ -46,6 +46,9 @@ body {
 img {
     display: block;
     max-width: 100%;
+    pointer-events: none;
+    /* 마우스 클릭 이벤트 자체를 차단 */
+
 }
 
 a {
@@ -813,7 +816,7 @@ p {
 .project-info h3 {
     margin-top: 14px;
     font-size: clamp(1.5rem, 2.6vw, 2.1rem);
-    max-width: 14ch;
+    max-width: 100%;
 }
 
 .project-info>p {
@@ -1197,7 +1200,6 @@ body.cursor-drag .cursor-ring span {
 /* ===================== Ghost background text ===================== */
 .ghost-text {
     position: absolute;
-    top: -0.35em;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-mono);
@@ -1211,6 +1213,10 @@ body.cursor-drag .cursor-ring span {
     white-space: nowrap;
     opacity: 0.3;
     z-index: -2;
+}
+
+.projects .ghost-text {
+    top: -0.4em;
 }
 
 .section-head {

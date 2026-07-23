@@ -749,7 +749,7 @@
       startX = e.clientX;
       startScroll = track.scrollLeft;
       track.classList.add("dragging");
-      track.setPointerCapture(e.pointerId);
+      // track.setPointerCapture(e.pointerId);
     });
     window.addEventListener("pointermove", function (e) {
       if (!isDown) return;
@@ -800,11 +800,30 @@
   var lightboxImg = document.getElementById("lightboxImg");
   var lightboxCaption = document.getElementById("lightboxCaption");
 
+  // document.querySelectorAll(".gallery-item").forEach(function (item) {
+  //   item.addEventListener("click", function () {
+  //     lightboxCaption.textContent = item.dataset.caption || "";
+  //     lightboxImg.src = item.dataset.full || "";
+  //     lightboxImg.alt = item.dataset.caption || "";
+  //     lightbox.classList.add("open");
+  //     lightbox.setAttribute("aria-hidden", "false");
+  //     document.documentElement.classList.add("no-scroll");
+  //   });
+  // });
   document.querySelectorAll(".gallery-item").forEach(function (item) {
     item.addEventListener("click", function () {
-      lightboxCaption.textContent = item.dataset.caption || "";
-      lightboxImg.src = item.dataset.full || "";
-      lightboxImg.alt = item.dataset.caption || "";
+      const caption = item.dataset.caption || "";
+      const img = item.querySelector("img");
+
+      lightboxCaption.textContent = caption;
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || caption;
+      } else {
+        lightboxImg.src = "";
+        lightboxImg.alt = caption;
+      }
+
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("no-scroll");
