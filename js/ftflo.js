@@ -709,36 +709,49 @@
       startScroll = 0,
       moved = false;
 
+    // function centerGalleryItem() {
+    //   var firstItem = track.querySelector(".gallery-item");
+    //   if (!firstItem) return;
+
+    //   var viewportWidth = window.innerWidth;
+    //   var isMobile = viewportWidth <= 860;
+    //   var itemWidth = isMobile ? Math.min(280, viewportWidth * 0.78) : 320;
+    //   var offset = Math.max(0, (viewportWidth - itemWidth) / 2);
+
+    //   track.style.paddingLeft = isMobile ? "12px" : "16px";
+    //   track.style.paddingRight = isMobile ? "12px" : "16px";
+    //   track.style.scrollPaddingLeft = isMobile ? "12px" : "16px";
+    //   track.style.scrollPaddingRight = isMobile ? "12px" : "16px";
+    // }
     function centerGalleryItem() {
-      var firstItem = track.querySelector(".gallery-item");
+      const firstItem = track.querySelector(".gallery-item");
       if (!firstItem) return;
 
-      var viewportWidth = window.innerWidth;
-      var isMobile = viewportWidth <= 860;
-      var itemWidth = isMobile ? Math.min(280, viewportWidth * 0.78) : 320;
-      var offset = Math.max(0, (viewportWidth - itemWidth) / 2);
+      const itemWidth = firstItem.getBoundingClientRect().width;
+      const sidePadding = (track.clientWidth - itemWidth) / 2;
 
-      track.style.paddingLeft = isMobile ? "12px" : "16px";
-      track.style.paddingRight = isMobile ? "12px" : "16px";
-      track.style.scrollPaddingLeft = isMobile ? "12px" : "16px";
-      track.style.scrollPaddingRight = isMobile ? "12px" : "16px";
+      track.style.paddingLeft = sidePadding + "px";
+      track.style.paddingRight = sidePadding + "px";
+
+      track.style.scrollPaddingLeft = sidePadding + "px";
+      track.style.scrollPaddingRight = sidePadding + "px";
     }
 
-    function loopGalleryToStart() {
-      var items = track.querySelectorAll(".gallery-item");
-      if (!items.length) return;
+    // function loopGalleryToStart() {
+    //   var items = track.querySelectorAll(".gallery-item");
+    //   if (!items.length) return;
 
-      var isMobile = window.innerWidth <= 860;
-      var cardWidth = isMobile
-        ? items[0].getBoundingClientRect().width + 12
-        : items[0].getBoundingClientRect().width + 18;
-      var contentWidth = cardWidth * items.length;
-      var maxScroll = Math.max(0, contentWidth - track.clientWidth + 24);
+    //   var isMobile = window.innerWidth <= 860;
+    //   var cardWidth = isMobile
+    //     ? items[0].getBoundingClientRect().width + 12
+    //     : items[0].getBoundingClientRect().width + 18;
+    //   var contentWidth = cardWidth * items.length;
+    //   var maxScroll = Math.max(0, contentWidth - track.clientWidth + 24);
 
-      if (track.scrollLeft >= maxScroll - 8) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      }
-    }
+    //   if (track.scrollLeft >= maxScroll - 8) {
+    //     track.scrollTo({ left: 0, behavior: "smooth" });
+    //   }
+    // }
 
     window.addEventListener("load", centerGalleryItem);
     window.addEventListener("resize", centerGalleryItem);

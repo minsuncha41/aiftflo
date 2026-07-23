@@ -103,6 +103,7 @@ button:focus-visible {
 
 }
 
+
 section {
     position: relative;
     padding: var(--section-pad) 0;
@@ -1137,9 +1138,9 @@ body.has-cursor button {
 }
 
 body.cursor-hover .cursor-ring {
-    width: 56px;
-    height: 56px;
-    background: rgba(0, 0, 0, 0.3);
+    width: 46px;
+    height: 46px;
+    background: rgba(0, 0, 0, 0.5);
     border-color: var(--ink);
 }
 
@@ -1223,6 +1224,9 @@ body.cursor-drag .cursor-ring span {
     position: relative;
     z-index: 1;
 }
+
+
+
 
 .gallery .ghost-text {
     top: -0.80em;
